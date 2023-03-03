@@ -1,0 +1,57 @@
+{% extends "base.html" -%}
+
+{% block content -%}
+
+{% set sections = [] -%}
+{% for section in config.extra.sections | default(value=[]) -%}
+{% set_global sections = sections | concat(with=get_section(path=section ~ "/_index.md")) -%}
+{% endfor -%}
+
+<div id="particles" class="fullflex"></div>
+
+<div id="landing" class="fullflex">
+	<div id="splash">
+
+		<h1 id="name">
+			{{ macro::format_name(name=config.extra.name) }}
+		</h1>
+
+		{% if config.extra.roles -%}
+		<div id="roles">
+			<p>
+				{% for role in config.extra.roles -%}
+				<span>{{ role }}</span><br>
+				{% endfor %}
+			</p>
+		</div>
+		{%- endif -%}
+
+		{% if config.extra.links -%}
+		<div id="links">
+			<p>
+				{% for link in config.extra.links -%}
+				<a aria-label="external link" href="{{ link.url }}"><i class="{{ link.icon }} fa-2x"></i></a>
+				{% endfor %}
+			</p>
+		</div>
+		{% endif %}
+
+		{% if sections -%}
+		<div id="internal_links">
+			<p>
+				{% for section in sections -%}
+				{% set section_name = macro::get_section_name(section=section) %}
+				<a aria-label="go to {{ section_name }} section" href="#{{ section_name }}">{{ macro::get_section_title(section=section) }}</a>
+				{% endfor %}
+			</p>
+		</div>
+		{%- endif %}
+
+	</div>
+</div>
+
+{% for section in sections -%}
+{{ macro::card(section=section) }}
+{% endfor -%}
+
+{% endblock content %}
