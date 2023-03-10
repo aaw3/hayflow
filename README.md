@@ -3,7 +3,7 @@
 ## About
 
 <div align="center">
-![Preview screenshot](screenshot.png "Preview screenshot")
+![Preview screenshot](https://gitlab.com/cyril-marpaud/hayflow/-/raw/main/screenshot.png "Preview screenshot")
 </div>
 
 [HayFlow](https://gitlab.com/cyril-marpaud/hayflow) is a modular landing page made as a theme for [Zola](https://www.getzola.org), a static site generator written in [Rust](https://www.rust-lang.org). It features a dark theme with a particles background, vertical arrows for navigation and a few card types which you are free to include to best suit your needs. Nearly all UI elements are subtly animated to convey a professional look (although I'm no designer 🤷 merely an [embedded systems engineer](https://www.linkedin.com/in/cyrilmarpaud)).
@@ -40,7 +40,7 @@ Finally, run...
 ```bash
 zola serve
 ```
-...and go to [http://127.0.0.1:1111](http://127.0.0.1:1111) to see your landing page in action with the default name displayed (John Doe).
+...and go to [http://localhost:1111](http://localhost:1111) to see your landing page in action with the default name displayed (John Doe).
 
 ## Landing page customization
 
