@@ -131,3 +131,16 @@ Margherita pizza is a typical [Neapolitan pizza](https://en.wikipedia.org/wiki/N
 ```
 
 The `link` variable is optional.
+
+## Whoami
+
+My name is Cyril Marpaud, I'm an embedded systems freelance engineer and a Rust enthusiast 🦀 I have nearly 10 years experience and am currently living in Lyon (France).
+
+<div align="center">
+
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+[linkedin-url]: https://www.linkedin.com/in/cyrilmarpaud/
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=grey&logoColor=blue
+
+</div>
