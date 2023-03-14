@@ -36,28 +36,28 @@
 			<p>
 				{%- for role in section.extra.roles %}
 				<span>{{ role }}</span><br>
-				{% endfor %}
+				{%- endfor %}
 			</p>
 		</div>
-		{%- endif -%}
+		{%- endif %}
 
 		{% if config.extra.links -%}
 		<div id="links">
 			<p>
-				{% for link in config.extra.links -%}
+				{%- for link in config.extra.links %}
 				<a aria-label="external link" href="{{ link.url }}"><i class="{{ link.icon }} fa-2x"></i></a>
-				{% endfor %}
+				{%- endfor %}
 			</p>
 		</div>
-		{% endif %}
+		{%- endif %}
 
 		{% if sections -%}
 		<div id="internal_links">
 			<p>
-				{% for section in sections -%}
-				{% set section_name = macro::get_section_name(section=section) %}
+				{%- for section in sections %}
+				{% set section_name = macro::get_section_name(section=section) -%}
 				<a aria-label="go to {{ section_name }} section" href="#{{ section_name }}">{{ macro::get_section_title(section=section) }}</a>
-				{% endfor %}
+				{%- endfor %}
 			</p>
 		</div>
 		{%- endif %}
@@ -65,8 +65,8 @@
 	</div>
 </div>
 
-{% for section in sections -%}
+{%- for section in sections %}
 {{ macro::card(section=section) }}
-{% endfor -%}
+{%- endfor %}
 
 {% endblock content %}
