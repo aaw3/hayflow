@@ -44,6 +44,20 @@ body {
 	margin: auto;
 }
 
+#lang {
+	position: absolute;
+	top: 1%;
+	right: 1%;
+	margin: 0.5em;
+	font-size: 1.5em;
+}
+
+#lang a {
+	color: white;
+	font-variant: small-caps;
+	text-decoration: none;
+}
+
 #name {
 	display: inline;
 	font-size: 7em;

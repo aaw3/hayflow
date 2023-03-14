@@ -9,7 +9,7 @@
    {% endif %}
 
    {% if page.extra.link %}
-   <a aria-label="external link" class="list_link" href="{{ page.extra.link }}" target="_blank" rel="noopener noreferrer">Découvrir</a>
+	<a aria-label="external link" class="list_link" href="{{ page.extra.link }}" target="_blank" rel="noopener noreferrer">{{ section.extra.discover | default(value="Discover") }}</a>
    {% endif %}
 
    {% if not link_after %}
