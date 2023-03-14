@@ -33,33 +33,47 @@ cd mywebsite
 git clone git@gitlab.com:cyril-marpaud/hayflow.git themes/hayflow
 ```
 
-Add `theme = "hayflow"` at the top of your `config.toml` file to tell Zola to use HayFlow (as described in [the documentation](https://www.getzola.org/documentation/themes/installing-and-using-themes/)).
+Add `theme = "hayflow"` at the top of `config.toml` file to tell Zola to use HayFlow (as described in [the documentation](https://www.getzola.org/documentation/themes/installing-and-using-themes/)).
 
 Finally, run...
 
 ```bash
 zola serve
 ```
-...and go to [http://localhost:1111](http://localhost:1111) to see your landing page in action with the default name displayed (John Doe).
+...and go to [http://localhost:1111](http://localhost:1111) to see the landing page in action with the default name displayed (John Doe).
 
 ## Landing page customization
 
-Customizing the landing page boils down to adding variables to your `config.toml`'s `[extra]` section. There are three variables one can use to do so: `name`, `roles` and `links` (they are all optional).
+Customizing the landing page boils down to two things:
+
+- adding the `name` and `links` variables to the `config.toml`'s `[extra]` section (`links` is optional. So is `name` if your name is John Doe)
+- adding the `roles` variable to the `content/_index.md`'s `[extra]` section (also optional)
+
+The difference comes from the fact that you might need to translate the `roles` into other languages. For that to be possible, they must be placed in a MarkDown file. See [multilingual support](#multilingual-support) for more info.
 
 - `name` speaks for itself.
 - `roles` is an array of strings. Each string is displayed on a separate line.
 - `links` is an array of `{icon, url}` objects. You can use any **free** icon from [Font Awesome](https://fontawesome.com/search?o=r&m=free) here, all you need is the icon's code. The [enveloppe icon](https://fontawesome.com/icons/envelope?s=solid&f=classic)'s code is `fa-solid fa-envelope`. The [pizza-slice icon](https://fontawesome.com/icons/pizza-slice?s=solid&f=classic)'s code is `fa-solid fa-pizza-slice`.
 
+This is what the `config.toml`'s `[extra]` section might look like after customization:
+
 ```TOML
 [extra]
 name = { first = "ninja", last = "turtle" }
-
-roles = ["Green 🟢", "Turtle 🐢", "Pizza enthusiast 🍕"]
 
 links = [
    { icon = "fa-solid fa-envelope", url = "mailto:slice@pizza.it" },
    { icon = "fa-solid fa-pizza-slice", url = "https://en.wikipedia.org/wiki/Pizza" },
 ]
+```
+
+And here's a customized version of `content/_index.md`:
+
+```TOML
++++
+[extra]
+roles = ["Green 🟢", "Turtle 🐢", "Pizza enthusiast 🍕"]
++++
 ```
 
 ## Adding a section
@@ -74,7 +88,7 @@ title = "Pizza"
 What a mouthful !
 ```
 
-Then, add this `sections` variable (an array of strings) to your `config.toml`'s `[extra]` section:
+Then, add this `sections` variable (an array of strings) to the `config.toml`'s `[extra]` section:
 
 ```TOML
 [extra]
@@ -85,7 +99,7 @@ A new internal link pointing to that section will appear on the landing page. Cl
 
 ## Customizing sections
 
-HayFlow currently supports three card types : `simple`, `columns` and `list`. If left unspecified, the type will default to `simple`. To change it, add a `card_type` variable to your `_index.md`'s [front matter](https://www.getzola.org/documentation/content/section/#front-matter)'s `[extra]` section:
+HayFlow currently supports three card types : `simple`, `columns` and `list`. If left unspecified, the type will default to `simple`. To change it, add a `card_type` variable to the `_index.md`'s `[extra]` section:
 
 ```TOML
 +++
@@ -131,6 +145,79 @@ Margherita pizza is a typical [Neapolitan pizza](https://en.wikipedia.org/wiki/N
 ```
 
 The `link` variable is optional.
+
+## Multilingual support
+
+HayFlow supports multilingual websites out of the box.
+
+### Declare more languages
+
+In `config.toml`, add the languages you want to support like so:
+
+```TOML
+default_language = "fr"
+[translations]
+flag = "🇫🇷"
+
+[languages.en]
+[languages.en.translations]
+flag = "🇬🇧"
+
+[languages.italian]
+[languages.italian.translations]
+flag = "🇮🇹"
+```
+
+This will make the language-select block in the top-right corner visible. It consists of clickable links to the translated versions of your website.
+The `flag` variable is optional and you can use simple text instead of an emoji flag. If left unspecified, it will default to the country code you chose for that language (`fr`, `en` and `italian` in this example).
+
+### Translate the content
+
+Each `.md` file in the `content` folder now needs to be translated into every additional language previously declared in `config.toml`.
+
+Following the above example (three languages, french, english and italian) and given this initial filetree:
+
+```
+content/
+   _index.md
+   pizzas/
+      _index.md
+      margherita.md
+      capricciosa.md
+```
+
+The final filetree should look like this for the translation to be complete:
+
+```
+content/
+   _index.md
+   _index.en.md
+   _index.italian.md
+   pizzas/
+      _index.md
+      _index.en.md
+      _index.italian.md
+      margherita.md
+      margherita.en.md
+      margherita.italian.md
+      capricciosa.md
+      capricciosa.en.md
+      capricciosa.italian.md
+```
+
+### List cards
+
+Additionally, if your website includes any "list card" sections, you might want to specify a `discover` variable in their `[extra]` sections like so:
+
+```TOML
++++
+title = "List Card Section"
+
+[extra]
+card_type = "list"
+discover = "Découvrir"
++++
+```
 
 ## Whoami
 
