@@ -60,8 +60,32 @@ body {
 
 #name {
 	display: inline;
-	font-size: 7em;
+	font-size: 2em;
 	transition: var(--transition-duration);
+}
+
+@media (min-width: 320px) {
+	#name {
+		font-size: 3em;
+	}
+}
+
+@media (min-width: 480px) {
+	#name {
+		font-size: 4em;
+	}
+}
+
+@media (min-width: 640px) {
+	#name {
+		font-size: 5.5em;
+	}
+}
+
+@media (min-width: 800px) {
+	#name {
+		font-size: 7em;
+	}
 }
 
 #name em {
