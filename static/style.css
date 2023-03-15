@@ -140,7 +140,7 @@ body {
 	margin: 2em;
 	color: white;
 	font-size: 1.5em;
-	text-underline-offset: 0.4em;
+	text-underline-offset: 0.2em;
 	text-decoration: underline var(--dark-purple);
 	transition: var(--transition-duration);
 }
