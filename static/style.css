@@ -33,7 +33,7 @@ body {
 	position: fixed;
 	height: 100vh;
 	z-index: -1;
-	background-color: #1a222c;
+	background-color: var(--dark-purple);
 }
 
 #splash {
