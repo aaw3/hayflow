@@ -289,3 +289,17 @@ body::-webkit-scrollbar {
 	background-color: var(--light-purple);
 	color: white;
 }
+
+#roles a {
+	color: var(--light-purple);
+}
+
+.card a {
+	color: var(--light-purple);
+}
+
+.white_filter {
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}

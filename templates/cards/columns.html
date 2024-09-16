@@ -1,12 +1,34 @@
 {{ section.content | safe }}
-		<div class="columns">
-			{%- for page in section.pages %}
-			<div>
-				<h2>{{ page.title }}</h2>
-				{% for icon in page.extra.icons | default(value=[]) -%}
-				<i class="{{ icon }} fa-3x"></i>
-				{%- endfor %}
-				{{ page.content | safe }}
-			</div>
-		{%- endfor %}
-		</div>
+<div class="columns">
+    {%- for page in section.pages %}
+        {% set link = page.extra.link | default(value="") %}
+        {%- if link != "" %}
+            <a href="{{ link }}" style="text-decoration: none; color: inherit;">
+            <div style="cursor: pointer; text-align: center;">
+        {%- else %}
+            <div style="text-align: center;">
+        {%- endif %}
+            <h2>{{ page.title }}</h2>
+            
+            {# FontAwesome Icons #}
+            {% for icon in page.extra.icons | default(value=[]) -%}
+            <i class="{{ icon }} fa-4x" style="font-size: 50px; margin: auto;"></i>
+            {%- endfor %}
+            
+            {# Image Icons #}
+            {% set img = page.extra.img | default(value="") %}
+			{% set img_class = page.extra.img_class | default(value="") %}
+            {% if img != "" %}
+                {% set width = page.extra.img_width | default(value="50") %}
+                {% set height = page.extra.img_height | default(value="50") %}
+                <img src="/images/{{ img }}" width={{ width }} height={{ height }} alt="{{ page.title }}" 
+                     style="margin: auto;" class={{ img_class }}>
+            {% endif %}
+            
+            {{ page.content | safe }}
+        </div>
+        {%- if link != "" %}
+            </a>
+        {%- endif %}
+    {%- endfor %}
+</div>

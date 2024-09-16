@@ -35,7 +35,7 @@
 		<div id="roles">
 			<p>
 				{%- for role in section.extra.roles %}
-				<span>{{ role }}</span><br>
+				<span>{{ role | safe }}</span><br>
 				{%- endfor %}
 			</p>
 		</div>
@@ -45,7 +45,7 @@
 		<div id="links">
 			<p>
 				{%- for link in config.extra.links %}
-				<a aria-label="external link" href="{{ link.url }}"><i class="{{ link.icon }} fa-2x"></i></a>
+				<a aria-label="external link" href="{{ link.url }}" id="{{ link.id }}"><i class="{{ link.icon }} fa-2x"></i></a>
 				{%- endfor %}
 			</p>
 		</div>

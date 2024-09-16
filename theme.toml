@@ -12,9 +12,9 @@ demo = "https://cyril-marpaud.gitlab.io"
 # be merged with user data, some kind of prefix or nesting is preferable
 # Use snake_casing to be consistent with the rest of Zola
 [extra]
-name = { first = "John", last = "Doe" }
+#name = { first = "Allen", last = "Wolf" }
 
 # The theme author info: you!
 [author]
-name = "Cyril Marpaud"
-homepage = "https://cyril-marpaud.gitlab.io"
+name = "Allen Wolf"
+homepage = "https://aaw3.dev"

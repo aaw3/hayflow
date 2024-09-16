@@ -14,4 +14,4 @@ highlight_code = false
 
 [extra]
 # Put all your custom variables here
-name = { first = "john", last = "doe" }
+#name = { first = "Allen", last = "Wolf" }
